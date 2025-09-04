@@ -3,12 +3,13 @@ pipeline {
   label {
     label 'instance_gcp'
     retries 2
+    }
   }
   environment {
       REPO_NAME = "abdlehameed208/test_maven"
       TAG = "latest"
   }
-}
+
   tools {
     maven "M399"
   }
