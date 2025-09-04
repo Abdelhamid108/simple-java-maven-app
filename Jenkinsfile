@@ -32,7 +32,7 @@ pipeline {
     stage ("Build_image") {
       steps {
         script{
-          docker.withRegistry('', 'docker_hub'){
+          docker.withRegistry('', 'docker_hub') {
             def myimage = docker.build "${env.REPO_NAME}:${env.TAG}"
             myimage.push()
           }
