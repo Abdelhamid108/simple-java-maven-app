@@ -4,6 +4,10 @@ pipeline {
     label 'instance_gcp'
     retries 2
   }
+  environment {
+      REPO_NAME = "abdlehameed208/test_maven"
+      TAG = "latest"
+  }
 }
   tools {
     maven "M399"
@@ -24,9 +28,14 @@ pipeline {
         }
       }
     }
-    stage ("Deliver") {
+    stage ("Build_image") {
       steps {
-        sh './jenkins/scripts/deliver.sh'
+        script{
+          docker.withRegistry('', 'docker-hub'){
+            def myimage = docker.build "${env.REPO_NAME}:${env.TAG}"
+            myimage.push()
+          }
+        }
       }
     }
   }
