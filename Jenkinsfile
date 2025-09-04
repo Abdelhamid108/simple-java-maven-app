@@ -6,7 +6,7 @@ pipeline {
     }
   }
   environment {
-      REPO_NAME = "abdlehameed208/test_maven"
+      REPO_NAME = "abdelhameed208/test_maven"
       TAG = "latest"
   }
 
